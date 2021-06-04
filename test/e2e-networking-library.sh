@@ -113,5 +113,9 @@ function setup_ingress_env_vars() {
     export GATEWAY_OVERRIDE=kong-proxy
     export GATEWAY_NAMESPACE_OVERRIDE=kong
   fi
+  if is_ingress_class apisix; then
+    export GATEWAY_OVERRIDE=apisix-proxy
+    export GATEWAY_NAMESPACE_OVERRIDE=ingress-apisix
+  fi
 }
 

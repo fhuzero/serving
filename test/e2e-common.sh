@@ -26,6 +26,7 @@ export ISTIO_VERSION="stable"
 export KOURIER_VERSION=""
 export AMBASSADOR_VERSION=""
 export CONTOUR_VERSION=""
+export APISIX_VERSION=""
 export CERTIFICATE_CLASS=""
 # Only build linux/amd64 bit images
 export KO_FLAGS="${KO_FLAGS:---platform=linux/amd64}"
@@ -147,6 +148,13 @@ function parse_flags() {
       # latest version of Kong pinned in third_party will be installed
       readonly KONG_VERSION=$2
       readonly INGRESS_CLASS="kong"
+      return 2
+      ;;
+    --apisix-version)
+      # currently, the value of --apisix-version is ignored
+      # latest version of APISIX pinned in third_party will be installed
+      readonly APISIX_VERSION=$2
+      readonly INGRESS_CLASS="apisix"
       return 2
       ;;
     --system-namespace)
